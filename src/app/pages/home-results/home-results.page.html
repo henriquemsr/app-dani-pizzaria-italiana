@@ -1,0 +1,117 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-buttons slot="start">
+      <ion-menu-button color="secondary"></ion-menu-button>
+    </ion-buttons>
+    <ion-title>
+        <ion-text color="light">
+          {{ 'app.name' | translate }} <ion-text color="secondary" class="fw700"> {{ 'app.version' | translate }}</ion-text>
+        </ion-text>
+    </ion-title>
+    <ion-buttons slot="end">
+      <ion-button size="small" shape="round" color="medium" (click)="notifications()">
+        <ion-icon name="notifications"></ion-icon>
+        <ion-badge color="dark" slot="end">2</ion-badge>
+      </ion-button>
+      <ion-button size="small" shape="round" (click)="openCart()">
+        <ion-icon name="cart"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+  <ion-toolbar color="dark">
+      <ion-searchbar [(ngModel)]="searchKey" (ionInput)="onInput($event)" (ionCancel)="onCancel($event)"></ion-searchbar>
+      <ion-buttons slot="end">
+        <ion-button size="small" shape="round" color="medium" (click)="searchFilter()">
+          <ion-icon name="options"></ion-icon>
+        </ion-button>
+      </ion-buttons>
+    </ion-toolbar>
+</ion-header>
+
+<ion-content>
+    <ion-grid no-padding fixed>
+        <ion-row no-padding>
+          <ion-col no-padding>
+    
+            <ion-card no-margin>
+              <ion-item lines="none" color="medium">
+                <ion-label>
+                  <h2 no-margin class="fw500 no-margin">
+                    <ion-text color="dark">{{ 'app.pages.homeresults.label.rnear' | translate }}:</ion-text>
+                  </h2>
+
+                  <p class="text-11x no-margin">
+                    <ion-text  color="primary">{{yourLocation}}</ion-text>
+                  </p>
+                </ion-label>
+                <ion-button shape="round" fill="outline" size="small" color="primary" (click)="alertLocation()">
+                  {{ 'app.label.location' | translate }}
+                  <ion-icon name="locate"></ion-icon>
+                </ion-button>
+              </ion-item>
+            </ion-card>
+    
+          </ion-col>
+        </ion-row>
+    
+        <div no-margin [@staggerIn]="restaurants">
+          <!-- # -->
+          <ion-item lines="none" class="bg-white" tappable routerLink="/restaurant-detail/{{restaurant.id}}" *ngFor="let restaurant of restaurants">
+            <ion-thumbnail slot="start">
+              <img [src]="restaurant.thumbnail">
+            </ion-thumbnail>
+            <ion-label>
+              <h2>
+                  <ion-text color="dark"><strong>{{ restaurant.title }}</strong></ion-text>
+              </h2>
+              <p class="text-12x">
+                <ion-text color="secondary" class="fw700">{{restaurant.tags}}</ion-text> ∙ <ion-text color="primary">{{ restaurant.price }}</ion-text>
+              </p>
+              <p class="text-10x">
+                <ion-text color="primary">1 mile<sup>sq</sup> ∙ 30 - 60min</ion-text>
+              </p>
+
+                <ion-badge slot="end" color="secondary" class="rooms">
+                  <ion-icon name="star" color="light"></ion-icon>
+                  <ion-text color="light">{{ restaurant.rating | number:'1.1' }}</ion-text>
+                </ion-badge>
+
+            </ion-label>
+          </ion-item>
+          <!-- # -->
+        </div>
+    
+      </ion-grid>
+
+      <ion-button margin expand="full" color="secondary" (click)="openRestaurantListPage()">
+        {{ 'app.button.moreresults' | translate }}
+      </ion-button>      
+</ion-content>
+
+<ion-footer class="animated fadeIn">
+    <ion-toolbar color="primary">
+      <ion-grid no-padding>
+          <ion-row>
+            <ion-col size="4" no-padding>
+              <ion-button size="small" expand="full" fill="clear" color="medium" routerLink="/nearby">
+                <ion-icon slot="start" name="compass"></ion-icon>
+                {{ 'app.button.nearby' | translate }}
+              </ion-button>
+            </ion-col>
+            <ion-col size="4" no-padding>
+              <ion-button size="small" expand="full" fill="clear" color="medium" routerLink="/bycategory">
+                <ion-icon slot="start" name="apps"></ion-icon>
+                {{ 'app.button.bycategory' | translate }}
+              </ion-button>
+            </ion-col>
+            <ion-col size="4" no-padding>
+              <ion-button size="small" expand="full" fill="clear" color="medium" routerLink="/latest-orders">
+                <ion-icon slot="start" name="list-box"></ion-icon>
+                {{ 'app.button.orders' | translate }}
+              </ion-button>
+            </ion-col>
+          </ion-row>
+      </ion-grid>
+    </ion-toolbar>
+  </ion-footer>
+  

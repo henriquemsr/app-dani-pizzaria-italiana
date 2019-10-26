@@ -1,0 +1,37 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-buttons slot="start">
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
+    <ion-title>{{ 'app.pages.nearby.title.header' | translate }}</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <!-- # -->
+  <div id="nearby-map" class="nearby-map">
+		<agm-map *ngIf="nearRestaurants" [latitude]="nearRestaurants[0]?.lat" [longitude]="nearRestaurants[0]?.long" [zoom]="12">
+			<agm-marker *ngFor="let restaurant of nearRestaurants"
+			 [latitude]="restaurant.lat" [longitude]="restaurant.long">
+				<agm-info-window>
+          <ion-item tappable routerLink="/restaurant-detail/{{restaurant.id}}">
+            <ion-thumbnail slot="start">
+              <img [src]="restaurant.thumbnail">
+            </ion-thumbnail>
+            <ion-label>
+              <h3>
+                <strong>{{restaurant.title}}</strong>
+              </h3>
+              <p no-margin>
+                <ion-text color="primary">{{restaurant.city}}, {{restaurant.state}} •
+                  <span class="fw700">{{ restaurant.price }}</span>
+                </ion-text>
+              </p>
+            </ion-label>
+          </ion-item>
+				</agm-info-window>
+			</agm-marker>
+		</agm-map>
+	</div>
+  <!-- # -->
+</ion-content>

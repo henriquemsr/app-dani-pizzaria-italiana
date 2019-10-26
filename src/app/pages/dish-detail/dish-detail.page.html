@@ -1,0 +1,76 @@
+<ion-header *ngIf="item">
+  <ion-toolbar color="primary">
+    <ion-buttons slot="start">
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
+    <ion-title>
+      {{item.nome}}
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content *ngIf="item">
+  <span class="card-img-price text-white">
+    <strong>{{ item.valor | currency: 'BRL'}}</strong>
+  </span>
+
+  <ion-slides pager="true">
+    <ion-slide *ngFor="let image of dish.images" (click)="presentImage(image)">
+      <img [src]="image">
+      <div class="shadow"></div>
+    </ion-slide>
+  </ion-slides>
+
+  <ion-card no-margin color="primary" class="dotted">
+    <ion-card-content>
+      <ion-grid no-padding>
+
+        <ion-row margin-bottom>
+          <ion-col text-center>
+            <ion-icon name="remove-circle" class="text25" tappable (click)="minusQtd()" [hidden]="qtd < 2"
+              color="secondary"></ion-icon>
+          </ion-col>
+          <ion-col width-10 text-center>
+            <h4 ion-text color="light">Quantidade:</h4>
+            <h2 ion-text>{{ qtd }}</h2>
+          </ion-col>
+          <ion-col width-10 text-center>
+            <ion-icon name="add-circle" class="text25" tappable (click)="plusQtd()" color="secondary"></ion-icon>
+          </ion-col>
+        </ion-row>
+        <ion-row>
+          <ion-col text-center>
+            <ion-button color="secondary" (click)="addcart(dish, qtd)">
+              <ion-icon slot="start" name="cart" color="light"></ion-icon>
+              <ion-text color="light">Adicionar ao carrinho ({{ item.valor * qtd | currency: 'BRL' }})</ion-text>
+            </ion-button>
+          </ion-col>
+        </ion-row>
+
+      </ion-grid>
+    </ion-card-content>
+  </ion-card>
+
+  <ion-card no-margin class="spacerFab bg-white dotted">
+    <ion-card-content>
+      <!-- <h2>
+        <ion-text color="primary">{{ 'app.pages.dishdetail.label.ingredients' | translate }}</ion-text>
+      </h2>
+      <p>{{ dish.ingredients }}</p>
+
+      <hr class="bg-light"> -->
+
+      <h2>
+        <ion-text color="primary">{{ 'app.pages.dishdetail.label.description' | translate }}</ion-text>
+      </h2>
+      <p>{{ item.descricao }}</p>
+    </ion-card-content>
+  </ion-card>
+
+  <ion-fab vertical="bottom" horizontal="center" slot="fixed">
+    <ion-fab-button color="dark" (click)="openCart()">
+      <ion-icon name="cart"></ion-icon>
+    </ion-fab-button>
+  </ion-fab>
+
+</ion-content>

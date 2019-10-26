@@ -1,0 +1,130 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-buttons slot="start">
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
+    <ion-title>
+      <ion-text color="light">
+        {{ 'app.pages.restaurantlist.title.header' | translate }}
+      </ion-text>
+    </ion-title>
+    <ion-buttons slot="end">
+      <ion-button size="small" shape="round" (click)="settings()">
+        <ion-icon name="cog"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+  <ion-toolbar color="dark">
+      <ion-searchbar [(ngModel)]="searchKey" (ionInput)="onInput($event)" (ionCancel)="onCancel($event)"></ion-searchbar>
+      <ion-buttons slot="end">
+        <ion-button size="small" shape="round" color="medium" (click)="searchFilter()">
+          <ion-icon name="options"></ion-icon>
+        </ion-button>
+      </ion-buttons>
+    </ion-toolbar>
+</ion-header>
+
+<ion-content>
+
+  <ion-grid no-padding fixed>
+    <ion-row no-padding>
+      <ion-col no-padding>
+
+        <ion-card no-margin class="bg-white no-radius">
+          <ion-item lines="none">
+            <ion-label class="fw700">
+              <ion-text color="dark">{{ 'app.pages.restaurantlist.label.type' | translate }}:</ion-text>
+            </ion-label>
+            <ion-select [(ngModel)]="proptype" color="primary">
+              <ion-select-option *ngFor="let type of catList" [value]="type.value">
+                <ion-text color="primary">{{type.label}}</ion-text>
+              </ion-select-option>
+            </ion-select>
+          </ion-item>
+        </ion-card>
+
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+
+  <div no-margin *ngIf="viewMode === 'list'" [@staggerIn]="restaurants">
+    <ion-card class="bg-white" *ngFor="let restaurant of restaurants | termSearch:proptype:'tags'">
+      
+      <span class="card-img-status fw500 text-white" [ngClass]="{'closed': restaurant.label === 'closed', 'open': restaurant.label === 'open'}">
+        {{ restaurant.label }}
+      </span>
+
+      <ion-badge slot="start" color="secondary" class="float">
+        <ion-icon name="star" color="light"></ion-icon>
+        <ion-text color="light">{{ restaurant.rating | number:'1.1' }}</ion-text>
+      </ion-badge>      
+
+      <ion-img [src]="restaurant?.picture" tappable routerLink="/restaurant-detail/{{restaurant.id}}"></ion-img>
+
+      <ion-card-header>
+
+          <ion-fab vertical="top" horizontal="end" edge>
+            <ion-fab-button (click)="favorite(restaurant)">
+              <ion-icon name="heart"></ion-icon>
+            </ion-fab-button>
+          </ion-fab>
+
+          <ion-card-subtitle>       
+            <ion-text color="primary">{{restaurant.city}}, {{restaurant.state}} • {{ restaurant.price }}</ion-text>
+          </ion-card-subtitle>
+         
+          <ion-card-title margin-bottom tappable routerLink="/restaurant-detail/{{restaurant.id}}">           
+            <ion-text color="dark">{{restaurant.title}}</ion-text>
+          </ion-card-title>
+      </ion-card-header>
+
+      <ion-card-content no-padding>
+          <ion-chip color="secondary" outline="true" class="bot">
+              <ion-label color="secondary">{{restaurant.tags}}</ion-label>
+            </ion-chip> 
+      </ion-card-content>
+
+    </ion-card>
+  </div>
+
+  <div no-margin *ngIf="viewMode === 'map'">
+  <!-- # -->
+  <div id="nearby-map" class="nearby-map">
+      <agm-map [latitude]="restaurants[0].lat" [longitude]="restaurants[0].long" [zoom]="12">
+        <agm-marker *ngFor="let restaurant of restaurants | termSearch:proptype:'tags'"
+         [latitude]="restaurant.lat" [longitude]="restaurant.long">
+          <agm-info-window>
+            <ion-item tappable routerLink="/restaurant-detail/{{restaurant.id}}">
+              <ion-thumbnail slot="start">
+                <img [src]="restaurant.thumbnail">
+              </ion-thumbnail>
+              <ion-label>
+                <h3>
+                  <strong>{{restaurant.title}}</strong>
+                </h3>
+                <p no-margin>
+                  <ion-text color="primary">{{restaurant.city}}, {{restaurant.state}} •
+                    <span class="fw700">{{ restaurant.price }}</span>
+                  </ion-text>
+                </p>
+              </ion-label>
+            </ion-item>
+          </agm-info-window>
+        </agm-marker>
+      </agm-map>
+    </div>
+    <!-- # -->
+  </div>
+
+</ion-content>
+
+<ion-footer class="bg-dark">
+    <ion-segment color="light" [(ngModel)]="viewMode">
+        <ion-segment-button value="list">
+            <ion-icon name="list"></ion-icon>
+        </ion-segment-button>
+        <ion-segment-button value="map">
+            <ion-icon name="map"></ion-icon>
+        </ion-segment-button>
+    </ion-segment>
+</ion-footer>

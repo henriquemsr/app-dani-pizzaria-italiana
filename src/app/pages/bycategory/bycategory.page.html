@@ -1,0 +1,19 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-buttons slot="start">
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
+    <ion-title>{{ 'app.pages.bycategory.title.header' | translate }}</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <div [@staggerIn]="categories">
+    <ion-card no-margin text-center *ngFor="let category of categories" tappable routerLink="/restaurant-list/{{category.name}}">
+      <div class="shadow"></div>
+      <ion-img [src]="category.picture"></ion-img>
+      <h3 class="card-title">{{category.name}}</h3>
+      <p class="card-subtitle">{{category.quantity}} Restaurants</p>
+    </ion-card>
+  </div>
+</ion-content>

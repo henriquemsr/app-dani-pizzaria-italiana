@@ -1,0 +1,220 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-buttons slot="start">
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
+
+    <!-- <ion-buttons slot="end">
+      <ion-button size="small" shape="round" (click)="favorite(restaurant)">
+        <ion-icon name="heart"></ion-icon>
+      </ion-button>
+      <ion-button size="small" shape="round" (click)="share()">
+          <ion-icon name="share"></ion-icon>
+      </ion-button>
+    </ion-buttons> -->
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <!-- <span class="card-img-status fw500 text-white"
+    [ngClass]="{'closed': restaurant.label === 'closed', 'open': restaurant.label === 'open'}">
+    {{ restaurant.label }}
+  </span> -->
+
+  <ion-slides pager="true" margin-bottom>
+    <!-- <ion-slide *ngFor="let image of restaurant.images" (click)="presentImage(image)">
+      <img [src]="image">
+      <div class="shadow"></div>
+    </ion-slide> -->
+    <ion-slide>
+        <img src="https://media-cdn.tripadvisor.com/media/photo-s/16/0f/d3/33/photo5jpg.jpg">
+        <div class="shadow"></div>
+      </ion-slide>
+  </ion-slides>
+
+  <ion-card class="bg-white">
+    <ion-card-content>
+      <h1 class="fw700" text-center>
+        <!-- <ion-text color="dark">{{restaurant.title}}</ion-text> -->
+        <ion-text color="dark">Unidade Praia do Morro</ion-text>
+
+      </h1>
+      <!-- <p text-center>
+        <ion-text color="primary">1 mile<sup>sq</sup> • 30 - 60min • {{restaurant.price}}</ion-text>
+      </p> -->
+
+      <div text-center>
+        <!-- <ion-chip color="secondary" outline="true">
+          <ion-icon name="book" color="secondary"></ion-icon>
+          <ion-label>{{restaurant.tags}}</ion-label>
+        </ion-chip> -->
+
+        <!-- <ion-chip color="dark" outline="true">
+          <ion-icon name="star"></ion-icon>
+          <ion-label>{{ restaurant.rating | number:'1.1' }}</ion-label>
+        </ion-chip> -->
+      </div>
+    </ion-card-content>
+  </ion-card>
+
+  <ion-grid no-padding>
+    <ion-row no-padding>
+      <ion-col>
+        <ion-segment color="primary" [(ngModel)]="restaurantopts" padding-horizontal>
+          <ion-segment-button value="menu">
+            Menu
+          </ion-segment-button>
+          <ion-segment-button value="reviews">
+            Reviews
+          </ion-segment-button>
+          <ion-segment-button value="info">
+            Information
+          </ion-segment-button>
+        </ion-segment>
+
+        <div [ngSwitch]="restaurantopts" padding>
+          <div *ngSwitchCase="'menu'">
+            <ion-card class="bg-white" no-margin>
+              <ion-card-content no-padding>
+                <ion-item lines="none" *ngFor="let dish of items" tappable routerLink="/dish-detail/{{dish.id}}">
+                  <ion-avatar slot="start">
+                    <img [src]="dish.picture">
+                  </ion-avatar>
+                  <ion-label>
+                    <h2 class="fw700 text08">
+                      <ion-text color="dark">{{dish.nome}}</ion-text>
+                    </h2>
+                    <p>
+                      <ion-text color="primary">{{ dish.descricao }}</ion-text>
+                    </p>
+                  </ion-label>
+                  <ion-badge color="success">
+                    <ion-text color="light">{{ dish.valor | currency : 'BRL' }}</ion-text>
+                  </ion-badge>
+                </ion-item>
+              </ion-card-content>
+            </ion-card>
+
+            <br><br><br><br>
+
+          </div>
+          <div *ngSwitchCase="'reviews'">
+
+            <ion-grid no-padding margin-top margin-bottom>
+              <ion-row>
+                <ion-col size="4" no-padding>
+                  <ion-card no-margin class="bg-white animated fadeIn">
+                    <ion-card-content text-center>
+                      <h3>
+                        <ion-text color="primary">{{ 'app.label.average' | translate }}</ion-text>
+                      </h3>
+                      <h1 no-margin>
+                        <ion-text color="primary">
+                          <strong>{{ avgRating() }}</strong>
+                        </ion-text>
+                      </h1>
+                    </ion-card-content>
+                  </ion-card>
+                </ion-col>
+                <ion-col size="8" no-padding>
+                  <ion-card no-margin class="bg-profile animated fadeIn">
+                    <ion-card-content>
+                      <h1>
+                        <ion-text color="light">{{ avgRating() }} / <strong>5</strong></ion-text>
+                      </h1>
+                      <h3>
+                        <ion-text color="light">
+                          totally {{restaurant.reviews.length}} people reviewed
+                        </ion-text>
+                      </h3>
+                    </ion-card-content>
+                  </ion-card>
+                </ion-col>
+              </ion-row>
+            </ion-grid>
+
+            <ion-card *ngFor="let review of restaurant.reviews" class="bg-white" no-margin margin-bottom>
+              <ion-card-content>
+                <h2>
+                  <ion-text color="dark">
+                    <strong>{{ review.title }}</strong>
+                  </ion-text>
+                </h2>
+                <div class="text-08">
+                  <ion-icon color="secondary" size="small" name="star" *ngFor="let start of range(review.rating)">
+                  </ion-icon>
+                </div>
+                <p margin-bottom>
+                  <ion-text color="primary">
+                    {{ review.content }}
+                  </ion-text>
+                </p>
+
+                <hr class="bg-tertiary">
+
+                <cite class="text08">
+                  <ion-text color="medium">{{ review.username }} from {{ review.from }}</ion-text>
+                </cite>
+              </ion-card-content>
+            </ion-card>
+
+            <br><br><br><br>
+
+          </div>
+          <div *ngSwitchCase="'info'">
+
+            <ion-card class="bg-white" no-margin>
+              <agm-map [latitude]="restaurant.lat" [longitude]="restaurant.long" [zoom]="12">
+                <agm-marker [latitude]="restaurant.lat" [longitude]="restaurant.long">
+                </agm-marker>
+              </agm-map>
+
+              <ion-card-content>
+                <p text-center class="fw700">
+                  <ion-text color="dark">{{restaurant.address}}, {{restaurant.city}} {{restaurant.state}}</ion-text>
+                </p>
+
+                <hr class="bg-tertiary" margin-bottom>
+
+                <h2 class="fw700">
+                  <ion-text color="dark">About</ion-text>
+                </h2>
+                <p margin-bottom>
+                  <ion-text color="primary">{{ restaurant.description }}</ion-text>
+                </p>
+
+                <hr class="bg-light" margin-bottom>
+
+                <h2 class="fw700">
+                  <ion-text color="dark">Hours</ion-text>
+                </h2>
+                <p margin-bottom>
+                  <ion-text color="primary">Open 11AM • Closes 11PM</ion-text>
+                </p>
+
+                <hr class="bg-light" margin-bottom>
+
+                <h2 class="fw700">
+                  <ion-text color="dark">Phone</ion-text>
+                </h2>
+                <p>
+                  <ion-text color="primary">+1 (212) 999 0001</ion-text>
+                </p>
+              </ion-card-content>
+            </ion-card>
+
+            <br><br><br><br>
+
+          </div>
+        </div>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+
+  <ion-fab vertical="bottom" horizontal="center" slot="fixed">
+    <ion-fab-button color="dark" (click)="openCart()">
+      <ion-icon name="cart"></ion-icon>
+    </ion-fab-button>
+  </ion-fab>
+
+</ion-content>
