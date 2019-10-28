@@ -41,7 +41,7 @@
     "app.label.fullname": "Nome Completo",
     "app.label.address": "Endereço",
     "app.label.city": "Cidade",
-    "app.label.state": "Stado",
+    "app.label.state": "Estado",
     "app.label.email": "Email",
     "app.label.password": "Senha",
     "app.label.details": "Detalhes",

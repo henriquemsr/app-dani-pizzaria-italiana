@@ -40,7 +40,7 @@
         </ion-row>
         <ion-row>
           <ion-col text-center>
-            <ion-button color="secondary" (click)="addcart(dish, qtd)">
+            <ion-button color="secondary" (click)="addcart(item, qtd)">
               <ion-icon slot="start" name="cart" color="light"></ion-icon>
               <ion-text color="light">Adicionar ao carrinho ({{ item.valor * qtd | currency: 'BRL' }})</ion-text>
             </ion-button>

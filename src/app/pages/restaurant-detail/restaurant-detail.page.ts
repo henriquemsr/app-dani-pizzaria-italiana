@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { NavController, ActionSheetController, ModalController, ToastController } from '@ionic/angular';
+import { NavController, ActionSheetController, ModalController, ToastController, MenuController } from '@ionic/angular';
 import { ActivatedRoute, Router } from '@angular/router';
 
 import { CartPage } from './../modal/cart/cart.page';
@@ -55,7 +55,8 @@ export class RestaurantDetailPage {
     private translate: TranslateProvider,
     private cartService: CartService,
     private restaurantService: RestaurantService,
-    private dishService: DishService
+    private dishService: DishService,
+    public menuCtrl: MenuController,
   ) {
     // this.restaurantID = this.route.snapshot.paramMap.get('id');
     this.restaurantID = 1;
@@ -66,6 +67,7 @@ export class RestaurantDetailPage {
     //this.restaurantService.getRestaurants()[0];
     this.getItems();
   }
+  
   getItems() {
     this.restaurantService.httpGet(ENDPOINT.ITEMS_RESTAURANT, null).subscribe(
       res => {
@@ -81,6 +83,7 @@ export class RestaurantDetailPage {
 
   ionViewWillEnter() {
     this.dishes = this.dishService.findAll();
+    this.menuCtrl.enable(true);
   }
 
   // openDishDetail(dish) {

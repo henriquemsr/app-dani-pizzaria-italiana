@@ -64,7 +64,7 @@ export class DishDetailPage {
   addcart(dish, qtd) {
     this.cartService.addtoCart(dish, qtd).then(async () => {
       const toast = await this.toastCtrl.create({
-        message: 'Dish added to Cart',
+        message: 'o item foi adicionado ao carrinho',
         duration: 2000,
         position: 'top',
         closeButtonText: 'OK',

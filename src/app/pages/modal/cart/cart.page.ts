@@ -30,22 +30,24 @@ export class CartPage {
     this.getOrders();
   }
 
-  async removeOrder (order) {
+  async removeOrder(order) {
     this.cartService.removefromCart(order)
       .then(() => {
-          this.getOrders();
+        this.getOrders();
       })
       .catch(error => alert(JSON.stringify(error)));
 
-    await this.slidingList.close().then((a) => {});
+    await this.slidingList.close().then((a) => { });
   }
 
-  getOrders () {
+  getOrders() {
     this.cartService.getOrders().then(orders => {
       this.orders = orders;
+      console.log(this.orders);
+
       this.totalVal = 0;
       this.orders.forEach((val, i) => {
-        this.totalVal = this.totalVal + (val.order.price * val.qtd);
+        this.totalVal = this.totalVal + (val.order.valor * val.qtd);
       });
     });
   }
@@ -54,7 +56,7 @@ export class CartPage {
   minusQtd(order) {
     this.cartService.editQtdOrder(order, 'minus')
       .then(() => {
-          this.getOrders();
+        this.getOrders();
       })
       .catch(error => alert(JSON.stringify(error)));
   }
@@ -63,7 +65,7 @@ export class CartPage {
   plusQtd(order) {
     this.cartService.editQtdOrder(order, 'plus')
       .then(() => {
-          this.getOrders();
+        this.getOrders();
       })
       .catch(error => alert(JSON.stringify(error)));
   }

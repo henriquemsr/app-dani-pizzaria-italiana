@@ -182,7 +182,6 @@ ion-item {
       .list-form {
         padding: 0;
         margin-bottom: 0;
-  
         ion-item {
           background: none;
           padding: 0;
@@ -202,6 +201,7 @@ ion-item {
   
           input {
             color: var(--ion-color-light);
+            border-bottom:1px solid #0CAA55;
           }
         }
       }
@@ -226,3 +226,25 @@ ion-item {
       margin-bottom: -2px;
     }
   }
+
+  .wrap-button{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width:100%;
+    ion-button{
+      width:100%;
+    }
+    .btn-load{
+      width:36px;
+    }
+    }
+    
+    
+    .transition{
+      transition: .5s all!important;
+    }
+    .btn-load{
+        width:36px;
+        transition: .5s all;
+    }

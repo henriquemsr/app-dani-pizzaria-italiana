@@ -1,22 +1,41 @@
 import { Component, OnInit } from '@angular/core';
 import { NavController, LoadingController, ToastController } from '@ionic/angular';
 import { TranslateProvider } from '../../providers';
+import { UserService } from 'src/app/providers/users/user.service';
+import { ENDPOINT } from 'src/app/providers/endpoints';
 
 @Component({
   selector: 'app-edit-profile',
   templateUrl: './edit-profile.page.html',
   styleUrls: ['./edit-profile.page.scss'],
 })
-export class EditProfilePage implements OnInit {
+export class EditProfilePage implements OnInit {  
+  user: any;
 
   constructor(
     public navCtrl: NavController,
     public loadingCtrl: LoadingController,
     public toastCtrl: ToastController,
-    private translate: TranslateProvider
-    ) { }
+    private translate: TranslateProvider,
+    public userService: UserService
+  ) { }
 
   ngOnInit() {
+    let id = localStorage.getItem("idUser");
+    this.getUser(id);
+  }
+
+  getUser(id) {
+    this.userService.httpGet(`${ENDPOINT.USER}${id}`, null).subscribe(
+      res => {
+        console.log(res);
+        this.user = res.body['data'][0];
+        
+      },
+      err => {
+        console.log(err);
+      }
+    );
   }
 
   async sendData() {

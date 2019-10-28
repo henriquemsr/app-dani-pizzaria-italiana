@@ -88,9 +88,11 @@ export class LoginPage implements OnInit {
   typing() {
     this.showMsgError = false;
   }
+  load = false;
   msgError: string;
   showMsgError = false;
   goToHome() {
+    this.load = true;
     let loginData = {
       email: this.onLoginForm.get("email").value,
       password: this.onLoginForm.get("password").value,
@@ -99,13 +101,15 @@ export class LoginPage implements OnInit {
       res => {
         console.log(res);
         if (res.body['error'] === !true) {
-          localStorage.setItem("token", res.body['token'])
+          localStorage.setItem("token", res.body['token']);
+          localStorage.setItem("idUser", res.body['id']);
           this.navCtrl.navigateRoot('/home-location');
         } else {
           this.showMsgError = true;
           console.log(res.body['data']);
           this.msgError = res.body['data'];
         }
+        this.load = false;
       },
       err => {
         console.log(err);

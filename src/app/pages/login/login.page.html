@@ -28,7 +28,7 @@
           {{ 'app.label.errors.field' | translate }}
         </ion-text>
       </p>
-      
+
 
       <ion-item no-padding class="animated fadeInUp">
         <ion-label position="floating">
@@ -51,15 +51,29 @@
       </ion-text>
     </p>
 
-    <div>
-      <ion-button icon-left size="medium" expand="full" shape="round" color="dark" (click)="goToHome()"
-        [disabled]="!onLoginForm.valid" tappable>
-        <ion-icon name="log-in"></ion-icon>
-        {{ 'app.button.signin' | translate }}
+    <div class="wrap-button">
+      <ion-button class="transition" icon-left size="medium" expand="full" shape="round" color="dark"
+        (click)="goToHome()" [ngClass]="{'btn-load' : load}" [disabled]="!onLoginForm.valid" tappable>
+        <ion-icon *ngIf="!load" name="log-in"></ion-icon>
+        <span *ngIf="!load">{{ 'app.button.signin' | translate }}</span>
+        <span *ngIf="load"><i class="fas fa-spinner fa-spin"></i></span>
       </ion-button>
-      <p class="central animated fadeIn" color="danger" *ngIf="showMsgError">{{msgError}}</p>
+    </div>
 
-      <!-- <p text-center>
+
+
+    <!-- <div class="wrap-button">
+        <button class="my-btn-default" [ngClass]="{'btn-load' : load}" (click)="goToHome()" [disabled]="!onLoginForm.valid"
+          tappable>
+          <span *ngIf="!load">{{ 'app.button.signin' | translate }}</span>
+          <span *ngIf="load">
+            <i class="fas fa-spinner fa-spin"></i>
+          </span>
+        </button>
+      </div> -->
+    <p class="central animated fadeIn" color="danger" *ngIf="showMsgError">{{msgError}}</p>
+
+    <!-- <p text-center>
         <ion-text color="light">
           Ou {{ 'app.button.signin' | translate }} com:
         </ion-text>
@@ -85,7 +99,6 @@
         </ion-row>
       </ion-grid> -->
 
-    </div>
 
     <!-- Other links -->
     <div text-center margin-top>

@@ -24,11 +24,11 @@
             <ion-item class="bg-white" lines="none">
 
               <ion-thumbnail slot="start">
-                  <img [src]="order.order.picture" />
+                  <!-- <img [src]="order.order.picture" /> -->
               </ion-thumbnail>
                 <ion-label>
                   <h2 class="fw700">
-                    <ion-text color="dark">{{order.order.name}}</ion-text>
+                    <ion-text color="dark">{{order.order.nome}}</ion-text>
                   </h2>
                   <ion-grid class="filters" no-padding>
                     <ion-row>
@@ -47,7 +47,7 @@
                     </ion-row>
                   </ion-grid>
                   <div item-right>
-                    <ion-badge>{{ order.order.price * order.qtd | currency }}</ion-badge>
+                    <ion-badge>{{ order.order.valor * order.qtd | currency: 'BRL' }}</ion-badge>
                   </div>
                 </ion-label>
               </ion-item>
@@ -62,18 +62,18 @@
 
         <ion-card color="primary" class="no-radius" no-margin *ngIf="orders?.length > 0">
           <ion-card-content>
-            <p>
+            <!-- <p>
               <ion-text color="light">Delivery Tax (30 - 60min): <span class="fw700">FREE</span></ion-text>
-            </p>
+            </p> -->
 
             <hr>
 
             <p>
-              <ion-text color="light">Total Order Value</ion-text>
+              <ion-text color="light">Total Pedido</ion-text>
             </p>
 
             <ion-chip color="dark" class="fw700" outline="true">
-              <ion-label color="light">{{ totalVal | currency }}</ion-label>
+              <ion-label color="light">{{ totalVal | currency: 'BRL' }}</ion-label>
             </ion-chip>
           </ion-card-content>
         </ion-card>
