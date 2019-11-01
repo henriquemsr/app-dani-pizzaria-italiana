@@ -29,50 +29,50 @@ export class AppComponent {
     public navCtrl: NavController
   ) {
     this.appPages = [
+      // {
+      //   title: 'Home Results',
+      //   url: '/home-results',
+      //   direct: 'root',
+      //   icon: 'home'
+      // },
+      // {
+      //   title: 'Home Location',
+      //   url: '/home-location',
+      //   direct: 'root',
+      //   icon: 'home'
+      // },
+      // {
+      //   title: 'Messages',
+      //   url: '/messages',
+      //   direct: 'forward',
+      //   icon: 'mail'
+      // },
+      // {
+      //   title: 'Restaurant List',
+      //   url: '/restaurant-list/ ',
+      //   direct: 'forward',
+      //   icon: 'home'
+      // },
       {
-        title: 'Home Results',
-        url: '/home-results',
-        direct: 'root',
-        icon: 'home'
-      },
-      {
-        title: 'Home Location',
-        url: '/home-location',
-        direct: 'root',
-        icon: 'home'
-      },
-      {
-        title: 'Messages',
-        url: '/messages',
-        direct: 'forward',
-        icon: 'mail'
-      },
-      {
-        title: 'Restaurant List',
-        url: '/restaurant-list/ ',
-        direct: 'forward',
-        icon: 'home'
-      },
-      {
-        title: 'Dish List',
+        title: 'Lista de Pedidos',
         url: '/dish-list',
         direct: 'forward',
         icon: 'pizza'
       },
+      // {
+      //   title: 'Nearby',
+      //   url: '/nearby',
+      //   direct: 'forward',
+      //   icon: 'compass'
+      // },
+      // {
+      //   title: 'By Category',
+      //   url: '/bycategory',
+      //   direct: 'forward',
+      //   icon: 'albums'
+      // },
       {
-        title: 'Nearby',
-        url: '/nearby',
-        direct: 'forward',
-        icon: 'compass'
-      },
-      {
-        title: 'By Category',
-        url: '/bycategory',
-        direct: 'forward',
-        icon: 'albums'
-      },
-      {
-        title: 'Latest Orders',
+        title: 'Últimos pedidos',
         url: '/latest-orders',
         direct: 'forward',
         icon: 'list-box'
@@ -83,30 +83,30 @@ export class AppComponent {
         direct: 'forward',
         icon: 'heart'
       },
-      {
-        title: 'About',
-        url: '/about',
-        direct: 'forward',
-        icon: 'information-circle-outline'
-      },
-      {
-        title: 'Support',
-        url: '/support',
-        direct: 'forward',
-        icon: 'help-buoy'
-      },
-      {
-        title: 'App Settings',
-        url: '/settings',
-        direct: 'forward',
-        icon: 'cog'
-      },
-      {
-        title: 'Walkthrough',
-        url: '/',
-        direct: 'forward',
-        icon: 'photos'
-      }
+      // {
+      //   title: 'About',
+      //   url: '/about',
+      //   direct: 'forward',
+      //   icon: 'information-circle-outline'
+      // },
+      // {
+      //   title: 'Support',
+      //   url: '/support',
+      //   direct: 'forward',
+      //   icon: 'help-buoy'
+      // },
+      // {
+      //   title: 'App Settings',
+      //   url: '/settings',
+      //   direct: 'forward',
+      //   icon: 'cog'
+      // },
+      // {
+      //   title: 'Walkthrough',
+      //   url: '/',
+      //   direct: 'forward',
+      //   icon: 'photos'
+      // }
     ];
 
     this.initializeApp();

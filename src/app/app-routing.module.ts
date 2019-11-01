@@ -89,6 +89,12 @@ const routes: Routes = [
     path: 'cart',
     loadChildren: () => import('./pages/modal/cart/cart.module').then(m => m.CartPageModule)
   },
+  {
+    path: 'address',
+    loadChildren: () => import('./pages/modal/address/address.module').then(m => m.AddressPageModule)
+  },
+  // { path: 'address', loadChildren: './pages/modal/address/address.module#AddressPageModule' },
+
   // {
   //   path: '**',
   //   redirectTo: '/home-results'

@@ -12,7 +12,7 @@
     <ion-card-content class="bg-profile">
       <img src="assets/img/avatar.jpeg">
       <h1 class="fw500">{{user.nome}}</h1>
-      
+
       <ion-button icon-left color="secondary">
         <ion-icon name="photos"></ion-icon>
         {{ 'app.label.edit' | translate }} / {{ 'app.label.insertavatar' | translate }}
@@ -30,7 +30,7 @@
 
             <ion-item>
               <ion-label color="dark" position="stacked">{{ 'app.label.fullname' | translate }}:</ion-label>
-              <ion-input inputmode="text" placeholder="Ex..: Joe Doe" [value]="user.nome"></ion-input>
+              <ion-input inputmode="text" [value]="user.nome"></ion-input>
             </ion-item>
 
             <ion-item>
@@ -38,24 +38,42 @@
               <ion-input inputmode="email" [value]="user.email"></ion-input>
             </ion-item>
 
-            <ion-item>
-              <ion-label color="dark" position="stacked">{{ 'app.label.address' | translate }}:</ion-label>
-              <ion-input inputmode="text" placeholder="Ex.: Abey Road 5"></ion-input>
+            <ion-item center>
+              <span>Endereço</span>
+              <span (click)="openAddres()">icon</span>
             </ion-item>
+            <!-- <div>
+              <ion-item>
+                <ion-label color="dark" position="stacked">Cep</ion-label>
+                <ion-input inputmode="text"></ion-input>
+              </ion-item>
 
-            <ion-item>
-              <ion-label color="dark">{{ 'app.label.city' | translate }}</ion-label>
-              <ion-select>
-                <ion-select-option value="1">Guarapari</ion-select-option>
-              </ion-select>
-            </ion-item>
+              <ion-item>
+                <ion-label color="dark" position="stacked">Rua/Avenida</ion-label>
+                <ion-input inputmode="text"></ion-input>
+              </ion-item>
 
-            <ion-item>
-              <ion-label color="dark">{{ 'app.label.state' | translate }}</ion-label>
-              <ion-select>
-                <ion-select-option value="1">ES</ion-select-option>                
-              </ion-select>
-            </ion-item>
+              <ion-item>
+                <ion-label color="dark" position="stacked">Número</ion-label>
+                <ion-input inputmode="text"></ion-input>
+              </ion-item>
+
+              <ion-item>
+                <ion-label color="dark" position="stacked">Bairro</ion-label>
+                <ion-input inputmode="text"></ion-input>
+              </ion-item>
+
+              <ion-item>
+                <ion-label color="dark" position="stacked">Cidade</ion-label>
+                <ion-input inputmode="text"></ion-input>
+              </ion-item>
+
+              <ion-item>
+                <ion-label color="dark" position="stacked">Estado</ion-label>
+                <ion-input inputmode="text"></ion-input>
+              </ion-item>
+            </div> -->
+
           </ion-list>
 
           <!-- <ion-list>
@@ -85,15 +103,16 @@
       </ion-row>
     </ion-grid>
 
-    <ion-button size="large" expand="full" color="dark" (click)="sendData()" no-margin>
-      {{ 'app.label.edit' | translate }}</ion-button>
+    <!-- <ion-button size="large" expand="full" color="dark" (click)="sendData()" no-margin>{{ 'app.label.edit' | translate }}</ion-button> -->
+    <ion-button size="default" expand="full" color="dark" (click)="sendData()" margin>SALVAR</ion-button>
+
   </ion-card>
 
   <div padding>
-    <ion-text color="dark" no-margin>
+    <!-- <ion-text color="dark" no-margin>
       Lorem ipsum dolor sit amet, consectetur adipisicing elit. Illum odio placeat incidunt nesciunt atque ratione
       quisquam, fugit
       omnis maxime adipisci excepturi dignissimos aliquam asperiores itaque unde sequi? Minus, quia, dolore?
-    </ion-text>
+    </ion-text> -->
   </div>
 </ion-content>

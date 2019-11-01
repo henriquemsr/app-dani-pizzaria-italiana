@@ -13,9 +13,10 @@
 
     <!-- Register form -->
     <form [formGroup]="onRegisterForm" class="list-form">
+
       <ion-item no-padding class="animated fadeInUp">
         <ion-label position="floating">
-          <ion-icon name="mail" item-start></ion-icon>
+          <ion-icon name="person" item-start></ion-icon>
           {{ 'app.label.fullname' | translate }}
         </ion-label>
         <ion-input color="secondary" type="text" formControlName="fullName"></ion-input>
@@ -40,6 +41,19 @@
       </p>
 
       <ion-item no-padding class="animated fadeInUp">
+          <ion-label position="floating">
+            <ion-icon name="call" item-start></ion-icon>
+            Telefone
+          </ion-label>
+          <ion-input color="secondary" type="text" formControlName="telefone"></ion-input>
+        </ion-item>
+        <p ion-text class="text08" *ngIf="onRegisterForm.get('telefone').touched && onRegisterForm.get('telefone').hasError('required')">
+          <ion-text color="warning">
+            {{ 'app.label.errors.field' | translate }}
+          </ion-text>
+        </p>
+
+      <ion-item no-padding class="animated fadeInUp">
         <ion-label position="floating">
           <ion-icon name="lock" item-start></ion-icon>
           {{ 'app.label.password' | translate }}
@@ -60,13 +74,13 @@
         {{ 'app.button.signup' | translate }}
       </ion-button>
 
-      <p text-center>
+      <!-- <p text-center>
         <ion-text color="light">
           Or Sign Up with:
         </ion-text>
-      </p>
+      </p> -->
 
-      <ion-grid class="btn-group">
+      <!-- <ion-grid class="btn-group">
         <ion-row>
           <ion-col size="4">
             <ion-button shape="round" expand="full" fill="outline" color="tertiary">
@@ -84,7 +98,7 @@
             </ion-button>
           </ion-col>
         </ion-row>
-      </ion-grid>
+      </ion-grid> -->
 
     </div>
 

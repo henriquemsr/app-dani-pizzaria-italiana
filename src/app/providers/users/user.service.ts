@@ -24,4 +24,12 @@ export class UserService {
     const routeParam = param ? endpoint + param : endpoint;
     return this.http.get(routeParam, { headers, observe: 'response' });
   }
+
+  httpPost(endpoint: string, param, requireToken = true) {
+    let headers = new HttpHeaders();
+    if (requireToken) {
+      headers = this.createAuthHeader(headers);
+    }
+    return this.http.post(endpoint, param, { headers, observe: 'response' });
+  }
 }

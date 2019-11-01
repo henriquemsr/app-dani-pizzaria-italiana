@@ -73,13 +73,13 @@
           </ion-segment-button>
         </ion-segment>
 
-        <div [ngSwitch]="restaurantopts" padding>
+        <div [ngSwitch]="restaurantopts" padding *ngIf="items">
           <div *ngSwitchCase="'menu'">
             <ion-card class="bg-white" no-margin>
               <ion-card-content no-padding>
                 <ion-item lines="none" *ngFor="let dish of items" tappable routerLink="/dish-detail/{{dish.id}}">
                   <ion-avatar slot="start">
-                    <img [src]="dish.picture">
+                    <img [src]="dish.images_upload.nome_image">
                   </ion-avatar>
                   <ion-label>
                     <h2 class="fw700 text08">
