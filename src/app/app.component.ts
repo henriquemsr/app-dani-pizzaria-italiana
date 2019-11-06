@@ -72,6 +72,12 @@ export class AppComponent {
       //   icon: 'albums'
       // },
       {
+        title: 'Continuar comprando',
+        url: '/restaurant-detail/1',
+        direct: 'forward',
+        icon: 'ios-basket'
+      },
+      {
         title: 'Últimos pedidos',
         url: '/latest-orders',
         direct: 'forward',

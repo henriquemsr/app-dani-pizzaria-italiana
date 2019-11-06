@@ -6,6 +6,8 @@ export const ENDPOINT = {
     ITEMS_RESTAURANT: `${URL}produtos/images`,
     ITEM_RESTAURANT: `${URL}produtos/produtos`,
     USER: `${URL}usuario/usuarios/`,
+    ORDER: `${URL}pedidos/pedidos`,
+    ORDER_PROD: `${URL}pedido/produtos`,
     IMG: `http://201.18.67.132/backendDani/src/imagens/`,
 
 }
