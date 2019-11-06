@@ -49,3 +49,18 @@ ion-slides {
         background-color: rgba(var(--ion-color-success-rgb), .8);
     }
 }
+.bg-valor{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: #4949e2;
+    color:#fff;
+    border-radius: 10px;
+    margin:5px;
+    padding:2px;
+}
+.bg-oferta{
+    text-decoration: line-through;
+    color: #e93737;
+    margin:5px;
+}

@@ -15,8 +15,8 @@
   </span>
 
   <ion-slides pager="true">
-    <ion-slide *ngFor="let image of dish.images" (click)="presentImage(image)">
-      <img [src]="image">
+    <ion-slide>
+      <img [src]="item.images_upload.nome_image">      
       <div class="shadow"></div>
     </ion-slide>
   </ion-slides>

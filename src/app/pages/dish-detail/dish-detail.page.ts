@@ -33,15 +33,15 @@ export class DishDetailPage {
   ) {
     this.dishID = this.route.snapshot.paramMap.get('id');
     this.getItem(this.dishID);
-    this.dish = this.dishService.getItem(this.dishID) ?
-      this.dishService.getItem(this.dishID) :
-      this.dishService.findAll()[0];
+    // this.dish = this.dishService.getItem(this.dishID) ?
+    //   this.dishService.getItem(this.dishID) :
+    //   this.dishService.findAll()[0];
 
   }
 
   item: any;
   getItem(id) {
-    this.dishService.httpGet(`${ENDPOINT.ITEM_RESTAURANT}/${id}`, null).subscribe(
+    this.dishService.httpGet(`${ENDPOINT.ITEMS_RESTAURANT}/${id}`, null).subscribe(
       res => {
         this.item = res.body['data'][0];
         console.log(this.item);
@@ -67,6 +67,7 @@ export class DishDetailPage {
         message: 'o item foi adicionado ao carrinho',
         duration: 2000,
         position: 'top',
+        color: 'light',
         closeButtonText: 'OK',
         showCloseButton: true
       });

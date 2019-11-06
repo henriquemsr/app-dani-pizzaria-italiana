@@ -16,18 +16,18 @@
       <ion-list class="bg-white" lines="none">
         <ion-item no-padding *ngFor="let order of checkoutData">
             <ion-thumbnail slot="start">
-                <img [src]="order.order.picture"/>
+                <img [src]="order.order.images_upload.nome_image"/>
             </ion-thumbnail>
             <ion-label>
               <h2 class="fw700">
-                <ion-text color="dark">{{order.order.name}}</ion-text>
+                <ion-text color="dark">{{order.order.nome}}</ion-text>
               </h2>
               <p>
-                <ion-text color="primary">{{order.order.ingredients}}</ion-text>
+                <ion-text color="primary">{{order.order.descricao}}</ion-text>
               </p>
             </ion-label>
 
-            <ion-badge>{{ order.order.price * order.qtd | currency }}</ion-badge>
+            <ion-badge>{{ order.order.valor * order.qtd | currency }}</ion-badge>
         </ion-item>
       </ion-list>
     </ion-card-content>
@@ -37,8 +37,7 @@
     <ion-card-content>
         <ion-grid no-padding>
           <ion-row>
-            <ion-col size="6">
-  
+            <ion-col size="6">  
               <ion-card color="success" no-margin text-center>
                 <ion-card-content>
                   <ion-text color="light">Total</ion-text>

@@ -28,9 +28,9 @@
       <div class="shadow"></div>
     </ion-slide> -->
     <ion-slide>
-        <img src="https://media-cdn.tripadvisor.com/media/photo-s/16/0f/d3/33/photo5jpg.jpg">
-        <div class="shadow"></div>
-      </ion-slide>
+      <img src="https://media-cdn.tripadvisor.com/media/photo-s/16/0f/d3/33/photo5jpg.jpg">
+      <div class="shadow"></div>
+    </ion-slide>
   </ion-slides>
 
   <ion-card class="bg-white">
@@ -62,151 +62,151 @@
     <ion-row no-padding>
       <ion-col>
         <ion-segment color="primary" [(ngModel)]="restaurantopts" padding-horizontal>
-          <ion-segment-button value="menu">
-            Menu
+          <ion-segment-button value="hamburger">
+
+            <img width="50px" height="50px" src="assets/img/menu-tabs/hamburger.svg">
+
           </ion-segment-button>
-          <ion-segment-button value="reviews">
-            Reviews
+          <ion-segment-button value="pizza">
+
+            <img width="50px" height="50px" src="assets/img/menu-tabs/pizza-slice.svg">
+
           </ion-segment-button>
-          <ion-segment-button value="info">
-            Information
+          <ion-segment-button value="bebidas">
+
+            <img width="50px" height="50px" src="assets/img/menu-tabs/beverages.svg">
+
+          </ion-segment-button>
+
+          <ion-segment-button value="sobremesas">
+
+            <img width="50px" height="50px" src="assets/img/menu-tabs/cake.svg">
+
           </ion-segment-button>
         </ion-segment>
 
         <div [ngSwitch]="restaurantopts" padding *ngIf="items">
-          <div *ngSwitchCase="'menu'">
+
+          <div *ngSwitchCase="'hamburger'">
             <ion-card class="bg-white" no-margin>
               <ion-card-content no-padding>
-                <ion-item lines="none" *ngFor="let dish of items" tappable routerLink="/dish-detail/{{dish.id}}">
-                  <ion-avatar slot="start">
-                    <img [src]="dish.images_upload.nome_image">
-                  </ion-avatar>
-                  <ion-label>
-                    <h2 class="fw700 text08">
-                      <ion-text color="dark">{{dish.nome}}</ion-text>
-                    </h2>
-                    <p>
-                      <ion-text color="primary">{{ dish.descricao }}</ion-text>
-                    </p>
-                  </ion-label>
-                  <ion-badge color="success">
-                    <ion-text color="light">{{ dish.valor | currency : 'BRL' }}</ion-text>
-                  </ion-badge>
-                </ion-item>
-              </ion-card-content>
-            </ion-card>
+                <div *ngFor="let dish of items">
+                  <ion-item lines="none" tappable routerLink="/dish-detail/{{dish.id}}" *ngIf="dish.id_categoria === 1">
+                    <ion-avatar slot="start">
+                      <img [src]="dish.images_upload.nome_image">
+                    </ion-avatar>
+                    <ion-label>
+                      <h2 class="fw700 text08">
+                        <ion-text color="dark">{{dish.nome}}</ion-text>
+                      </h2>
+                      <p>
+                        <ion-text color="primary">{{ dish.descricao }}</ion-text>
+                      </p>
+                    </ion-label>
+                    <span [ngClass]="dish.valor_oferta > 0 ? 'bg-oferta' : 'bg-valor'">
+                      <ion-text>{{ dish.valor | currency : 'BRL' }}</ion-text>
+                    </span>
 
-            <br><br><br><br>
-
-          </div>
-          <div *ngSwitchCase="'reviews'">
-
-            <ion-grid no-padding margin-top margin-bottom>
-              <ion-row>
-                <ion-col size="4" no-padding>
-                  <ion-card no-margin class="bg-white animated fadeIn">
-                    <ion-card-content text-center>
-                      <h3>
-                        <ion-text color="primary">{{ 'app.label.average' | translate }}</ion-text>
-                      </h3>
-                      <h1 no-margin>
-                        <ion-text color="primary">
-                          <strong>{{ avgRating() }}</strong>
-                        </ion-text>
-                      </h1>
-                    </ion-card-content>
-                  </ion-card>
-                </ion-col>
-                <ion-col size="8" no-padding>
-                  <ion-card no-margin class="bg-profile animated fadeIn">
-                    <ion-card-content>
-                      <h1>
-                        <ion-text color="light">{{ avgRating() }} / <strong>5</strong></ion-text>
-                      </h1>
-                      <h3>
-                        <ion-text color="light">
-                          totally {{restaurant.reviews.length}} people reviewed
-                        </ion-text>
-                      </h3>
-                    </ion-card-content>
-                  </ion-card>
-                </ion-col>
-              </ion-row>
-            </ion-grid>
-
-            <ion-card *ngFor="let review of restaurant.reviews" class="bg-white" no-margin margin-bottom>
-              <ion-card-content>
-                <h2>
-                  <ion-text color="dark">
-                    <strong>{{ review.title }}</strong>
-                  </ion-text>
-                </h2>
-                <div class="text-08">
-                  <ion-icon color="secondary" size="small" name="star" *ngFor="let start of range(review.rating)">
-                  </ion-icon>
+                    <span class="bg-valor" *ngIf="dish.valor_oferta > 0">
+                      <ion-text>{{ dish.valor_oferta | currency : 'BRL' }}</ion-text>
+                    </span>
+                  </ion-item>
                 </div>
-                <p margin-bottom>
-                  <ion-text color="primary">
-                    {{ review.content }}
-                  </ion-text>
-                </p>
-
-                <hr class="bg-tertiary">
-
-                <cite class="text08">
-                  <ion-text color="medium">{{ review.username }} from {{ review.from }}</ion-text>
-                </cite>
               </ion-card-content>
             </ion-card>
-
             <br><br><br><br>
-
           </div>
-          <div *ngSwitchCase="'info'">
 
+          <div *ngSwitchCase="'pizza'">
             <ion-card class="bg-white" no-margin>
-              <agm-map [latitude]="restaurant.lat" [longitude]="restaurant.long" [zoom]="12">
-                <agm-marker [latitude]="restaurant.lat" [longitude]="restaurant.long">
-                </agm-marker>
-              </agm-map>
+              <ion-card-content no-padding>
+                <div *ngFor="let dish of items">
+                  <ion-item lines="none" tappable routerLink="/dish-detail/{{dish.id}}" *ngIf="dish.id_categoria === 2">
+                    <ion-avatar slot="start">
+                      <img [src]="dish.images_upload.nome_image">
+                    </ion-avatar>
+                    <ion-label>
+                      <h2 class="fw700 text08">
+                        <ion-text color="dark">{{dish.nome}}</ion-text>
+                      </h2>
+                      <p>
+                        <ion-text color="primary">{{ dish.descricao }}</ion-text>
+                      </p>
+                    </ion-label>
+                    <span [ngClass]="dish.valor_oferta > 0 ? 'bg-oferta' : 'bg-valor'">
+                      <ion-text>{{ dish.valor | currency : 'BRL' }}</ion-text>
+                    </span>
 
-              <ion-card-content>
-                <p text-center class="fw700">
-                  <ion-text color="dark">{{restaurant.address}}, {{restaurant.city}} {{restaurant.state}}</ion-text>
-                </p>
-
-                <hr class="bg-tertiary" margin-bottom>
-
-                <h2 class="fw700">
-                  <ion-text color="dark">About</ion-text>
-                </h2>
-                <p margin-bottom>
-                  <ion-text color="primary">{{ restaurant.description }}</ion-text>
-                </p>
-
-                <hr class="bg-light" margin-bottom>
-
-                <h2 class="fw700">
-                  <ion-text color="dark">Hours</ion-text>
-                </h2>
-                <p margin-bottom>
-                  <ion-text color="primary">Open 11AM • Closes 11PM</ion-text>
-                </p>
-
-                <hr class="bg-light" margin-bottom>
-
-                <h2 class="fw700">
-                  <ion-text color="dark">Phone</ion-text>
-                </h2>
-                <p>
-                  <ion-text color="primary">+1 (212) 999 0001</ion-text>
-                </p>
+                    <span class="bg-valor" *ngIf="dish.valor_oferta > 0">
+                      <ion-text>{{ dish.valor_oferta | currency : 'BRL' }}</ion-text>
+                    </span>
+                  </ion-item>
+                </div>
               </ion-card-content>
             </ion-card>
-
             <br><br><br><br>
-
           </div>
+
+          <div *ngSwitchCase="'bebidas'">
+            <ion-card class="bg-white" no-margin>
+              <ion-card-content no-padding>
+                <div *ngFor="let dish of items">
+                  <ion-item lines="none" tappable routerLink="/dish-detail/{{dish.id}}" *ngIf="dish.id_categoria === 3">
+                    <ion-avatar slot="start">
+                      <img [src]="dish.images_upload.nome_image">
+                    </ion-avatar>
+                    <ion-label>
+                      <h2 class="fw700 text08">
+                        <ion-text color="dark">{{dish.nome}}</ion-text>
+                      </h2>
+                      <p>
+                        <ion-text color="primary">{{ dish.descricao }}</ion-text>
+                      </p>
+                    </ion-label>
+                    <span [ngClass]="dish.valor_oferta > 0 ? 'bg-oferta' : 'bg-valor'">
+                      <ion-text>{{ dish.valor | currency : 'BRL' }}</ion-text>
+                    </span>
+
+                    <span class="bg-valor" *ngIf="dish.valor_oferta > 0">
+                      <ion-text>{{ dish.valor_oferta | currency : 'BRL' }}</ion-text>
+                    </span>
+                  </ion-item>
+                </div>
+              </ion-card-content>
+            </ion-card>
+            <br><br><br><br>
+          </div>
+
+          <div *ngSwitchCase="'sobremesas'">
+            <ion-card class="bg-white" no-margin>
+              <ion-card-content no-padding>
+                <div *ngFor="let dish of items">
+                  <ion-item lines="none" tappable routerLink="/dish-detail/{{dish.id}}" *ngIf="dish.id_categoria === 4">
+                    <ion-avatar slot="start">
+                      <img [src]="dish.images_upload.nome_image">
+                    </ion-avatar>
+                    <ion-label>
+                      <h2 class="fw700 text08">
+                        <ion-text color="dark">{{dish.nome}}</ion-text>
+                      </h2>
+                      <p>
+                        <ion-text color="primary">{{ dish.descricao }}</ion-text>
+                      </p>
+                    </ion-label>
+                    <span [ngClass]="dish.valor_oferta > 0 ? 'bg-oferta' : 'bg-valor'">
+                      <ion-text>{{ dish.valor | currency : 'BRL' }}</ion-text>
+                    </span>
+
+                    <span class="bg-valor" *ngIf="dish.valor_oferta > 0">
+                      <ion-text>{{ dish.valor_oferta | currency : 'BRL' }}</ion-text>
+                    </span>
+                  </ion-item>
+                </div>
+              </ion-card-content>
+            </ion-card>
+            <br><br><br><br>
+          </div>
+
         </div>
       </ion-col>
     </ion-row>
