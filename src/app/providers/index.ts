@@ -6,3 +6,4 @@ export { DishService } from './dish/dish.service';
 export { CartService } from './cart/cart.service';
 export { MessageService } from './message/message.service';
 export { CategoryService } from './category/category.service';
+export { UserService } from './users/user.service';

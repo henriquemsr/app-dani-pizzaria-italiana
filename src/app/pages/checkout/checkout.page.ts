@@ -5,9 +5,11 @@ import { Storage } from '@ionic/storage';
 import {
   OrdersService,
   CartService,
+  UserService,
   TranslateProvider
 } from '../../providers';
 import { ENDPOINT } from 'src/app/providers/endpoints';
+
 
 @Component({
   selector: 'app-checkout',
@@ -24,6 +26,7 @@ export class CheckoutPage {
   constructor(
     public navCtrl: NavController,
     public ordersService: OrdersService,
+    public userService: UserService,
     public cartService: CartService,
     public loadingCtrl: LoadingController,
     public toastCtrl: ToastController,
@@ -33,9 +36,20 @@ export class CheckoutPage {
   ionViewWillEnter() {
     this.getOrders();
   }
+  getAdrress() {
+    this.userService.httpGet(`${ENDPOINT.ADDRESS}/${localStorage.getItem("idUser")}`, null).subscribe(
+      res => {
+        console.log(res);
+      },
+      err => {
+        console.log(err);
+      }
+    );
+  }
 
   getOrders() {
     this.cartService.getOrders().then(orders => {
+      this.getAdrress();
       this.checkoutData = orders;
       this.checkoutData.forEach((val, i) => {
         this.totalVal = this.totalVal + (val.order.valor * val.qtd);
