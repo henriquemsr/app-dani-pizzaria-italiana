@@ -45,6 +45,59 @@ export class CheckoutPage {
     });
   }
 
+  sendPay = false;
+
+  methodPayLocalMoney = false;
+  methodPayLocalCard = false;
+  changeMon = false;
+  noChangeMon = false;
+  inputCoins = false;
+  vlTyped: number = null;
+  changeMoney(n) {
+    if (n === 0) {// botão não
+      this.changeMon = false;
+      this.noChangeMon = true;
+      this.sendPay = true;
+      this.inputCoins = false;
+    } else {// botão sim
+      this.changeMon = true;
+      this.inputCoins = true;
+      this.noChangeMon = false;
+      this.sendPay = false;
+      this.vlTyped = null;
+    }
+  }
+  changeTyping() {
+    console.log(this.vlTyped);
+    if (this.vlTyped > 0) {
+      this.sendPay = true;
+    }
+  }
+  chooseMethodPayLocal(n) {
+    switch (n) {
+      case 1://pagamento em dinheiro no local
+        this.methodPayLocalMoney = true;
+        this.methodPayLocalCard = false;
+        this.sendPay = false;
+        this.changeMon = false;
+        this.noChangeMon = false;
+        this.inputCoins = false;
+        this.vlTyped = null;
+        break;
+      case 2://pagamento com cartão no local
+        this.methodPayLocalCard = true;
+        this.methodPayLocalMoney = false;
+        this.sendPay = true;
+        this.changeMon = false;
+        this.noChangeMon = false;
+        this.inputCoins = false;
+        this.vlTyped = null;
+        break;
+
+    }
+  }
+
+
   async makeBuy() {
     // send booking info
     const loader = await this.loadingCtrl.create({

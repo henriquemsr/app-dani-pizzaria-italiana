@@ -24,6 +24,7 @@
     "app.label.ch": "Cartão de débito",
     "app.label.cn": "Número do cartão",
     "app.label.pp": "Paypal",
+    "app.label.pay_delivery": "Pagar na Entrega",
     "app.label.freecancel": "cancelamento grátis",
     "app.label.average": "Média",
     "app.label.averageprice": "preço médio",

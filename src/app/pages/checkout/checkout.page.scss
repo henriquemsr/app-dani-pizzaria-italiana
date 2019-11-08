@@ -13,6 +13,7 @@
             border-radius: 0;
         }
     }
+    
 }
 
 .ccFlags {
@@ -24,4 +25,39 @@
   
   ion-select {
       max-width: 100%;
+  }
+  .btn-pay{
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      width:95%;
+      height:50px;
+      border-radius: 4px;
+      outline:none;
+      border:none;
+      color:#fff;
+      margin:5px;
+  }
+  .bg-unselected{
+      background: #FFC280!important;
+  }
+  .bg-selected{
+      background: #FF8400!important;
+  }
+  .input-bg-light{
+      background: #f0f0e6!important;
+      color:#777!important;
+  }
+  .bg-light{
+    background: #f0f0e6!important;
+  }
+  .align-address{
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      width:100%;
+      span{
+          margin:5px;
+          font-size:19px;
+      }
   }
