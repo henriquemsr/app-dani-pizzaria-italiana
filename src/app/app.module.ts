@@ -34,6 +34,7 @@ import { NotificationsComponent } from './components/notifications/notifications
 
 // Pipes
 import { PipesModule } from './pipes/pipes.module';
+import { AddressPageModule } from './pages/modal/address/address.module';
 
 export function HttpLoaderFactory(http: HttpClient) {
   return new TranslateHttpLoader(http, './assets/i18n/', '.json');
@@ -49,6 +50,7 @@ export function HttpLoaderFactory(http: HttpClient) {
     HttpClientModule,
     ImagePageModule,
     CartPageModule,
+    AddressPageModule,
     LocationPageModule,
     SearchFilterPageModule,
     IonicStorageModule.forRoot({

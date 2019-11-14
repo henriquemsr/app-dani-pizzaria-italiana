@@ -16,7 +16,8 @@
       <ion-list class="bg-white" lines="none">
         <ion-item no-padding *ngFor="let order of checkoutData">
           <ion-thumbnail slot="start">
-            <img [src]="order.order.images_upload.nome_image" />
+            <img *ngIf="order.order.images_upload !== null" [src]="order.order.images_upload.nome_image" />
+            <img *ngIf="order.order.images_upload === null" src="assets/img/logotipo.jpg" />
           </ion-thumbnail>
           <ion-label>
             <h2 class="fw700">
@@ -49,13 +50,17 @@
 
           </ion-col>
           <ion-col size="6" text-center>
-            
-            
-            <div class="align-address">
-              <span><ion-icon name="pin"></ion-icon></span>
-              <span>Guarapari</span>
+
+            <div *ngIf="address">
+              <div class="align-address" *ngFor="let item of address">
+                <span *ngIf="item.active === 1">
+                  <ion-icon name="pin"></ion-icon>
+                </span>
+                <span *ngIf="item.active === 1">{{item.cidade}}</span>
+              </div>
             </div>
-            <ion-button color="light">ALTERAR</ion-button>
+
+            <ion-button color="light" (click)="openAddress(adrress)">ALTERAR</ion-button>
           </ion-col>
         </ion-row>
       </ion-grid>

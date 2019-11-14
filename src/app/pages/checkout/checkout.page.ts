@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { NavController, ToastController, LoadingController } from '@ionic/angular';
+import { NavController, ToastController, LoadingController, ModalController } from '@ionic/angular';
 import { Storage } from '@ionic/storage';
 
 import {
@@ -9,6 +9,7 @@ import {
   TranslateProvider
 } from '../../providers';
 import { ENDPOINT } from 'src/app/providers/endpoints';
+import { AddressPage } from './../modal/address/address.page';
 
 
 @Component({
@@ -22,6 +23,7 @@ export class CheckoutPage {
   paymethods = 'creditcard';
   totalVal = 0;
   orderNumber: number = Math.floor(Math.random() * 10000);
+  address: any[];
 
   constructor(
     public navCtrl: NavController,
@@ -30,16 +32,26 @@ export class CheckoutPage {
     public cartService: CartService,
     public loadingCtrl: LoadingController,
     public toastCtrl: ToastController,
+    public modalCtrl: ModalController,
     private storage: Storage,
   ) { }
 
   ionViewWillEnter() {
     this.getOrders();
   }
+
+  async openAddress() {
+    const modal = await this.modalCtrl.create({
+      component: AddressPage
+    });
+    return await modal.present();
+  }
+
   getAdrress() {
     this.userService.httpGet(`${ENDPOINT.ADDRESS}/${localStorage.getItem("idUser")}`, null).subscribe(
       res => {
         console.log(res);
+        this.address = res.body['data'];
       },
       err => {
         console.log(err);

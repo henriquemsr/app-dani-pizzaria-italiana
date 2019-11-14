@@ -248,3 +248,15 @@ ion-item {
         width:36px;
         transition: .5s all;
     }
+    .no-img-product{
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      width:40px;
+      height:40px;
+      border-radius: 100%;
+      border:none;
+      outline:none;
+      background-image: url(./assets/img/logotipo.jpg);
+      background-size: cover;
+    }

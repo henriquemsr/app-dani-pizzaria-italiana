@@ -16,7 +16,9 @@
 
   <ion-slides pager="true">
     <ion-slide>
-      <img [src]="item.images_upload.nome_image">      
+      <img *ngIf="item.images_upload !== null" [src]="item.images_upload.nome_image">
+      <img *ngIf="item.images_upload === null" src="assets/img/logotipo.jpg">
+      
       <div class="shadow"></div>
     </ion-slide>
   </ion-slides>

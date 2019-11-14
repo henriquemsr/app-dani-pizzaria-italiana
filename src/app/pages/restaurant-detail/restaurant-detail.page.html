@@ -63,25 +63,16 @@
       <ion-col>
         <ion-segment color="primary" [(ngModel)]="restaurantopts" padding-horizontal>
           <ion-segment-button value="hamburger">
-
-            <img width="50px" height="50px" src="assets/img/menu-tabs/hamburger.svg">
-
+            <img width="50px" height="50px" src="assets/img/menu-tabs/hamburger.png">
           </ion-segment-button>
           <ion-segment-button value="pizza">
-
-            <img width="50px" height="50px" src="assets/img/menu-tabs/pizza-slice.svg">
-
+            <img width="50px" height="50px" src="assets/img/menu-tabs/pizza.png">
           </ion-segment-button>
           <ion-segment-button value="bebidas">
-
-            <img width="50px" height="50px" src="assets/img/menu-tabs/beverages.svg">
-
+            <img width="50px" height="50px" src="assets/img/menu-tabs/drink.png">
           </ion-segment-button>
-
           <ion-segment-button value="sobremesas">
-
-            <img width="50px" height="50px" src="assets/img/menu-tabs/cake.svg">
-
+            <img width="50px" height="50px" src="assets/img/menu-tabs/desserts.png">
           </ion-segment-button>
         </ion-segment>
 
@@ -93,7 +84,8 @@
                 <div *ngFor="let dish of items">
                   <ion-item lines="none" tappable routerLink="/dish-detail/{{dish.id}}" *ngIf="dish.id_categoria === 1">
                     <ion-avatar slot="start">
-                      <img [src]="dish.images_upload.nome_image">
+                      <img *ngIf="dish.images_upload !== null" [src]="dish.images_upload.nome_image">
+                      <span class="no-img-product" *ngIf="dish.images_upload === null"></span>
                     </ion-avatar>
                     <ion-label>
                       <h2 class="fw700 text08">
@@ -123,8 +115,10 @@
                 <div *ngFor="let dish of items">
                   <ion-item lines="none" tappable routerLink="/dish-detail/{{dish.id}}" *ngIf="dish.id_categoria === 2">
                     <ion-avatar slot="start">
-                      <img [src]="dish.images_upload.nome_image">
+                      <img *ngIf="dish.images_upload !== null" [src]="dish.images_upload.nome_image">
+                      <span class="no-img-product" *ngIf="dish.images_upload === null"></span>
                     </ion-avatar>
+
                     <ion-label>
                       <h2 class="fw700 text08">
                         <ion-text color="dark">{{dish.nome}}</ion-text>
@@ -153,7 +147,8 @@
                 <div *ngFor="let dish of items">
                   <ion-item lines="none" tappable routerLink="/dish-detail/{{dish.id}}" *ngIf="dish.id_categoria === 3">
                     <ion-avatar slot="start">
-                      <img [src]="dish.images_upload.nome_image">
+                      <img *ngIf="dish.images_upload !== null" [src]="dish.images_upload.nome_image">
+                      <span class="no-img-product" *ngIf="dish.images_upload === null"></span>
                     </ion-avatar>
                     <ion-label>
                       <h2 class="fw700 text08">
@@ -183,7 +178,8 @@
                 <div *ngFor="let dish of items">
                   <ion-item lines="none" tappable routerLink="/dish-detail/{{dish.id}}" *ngIf="dish.id_categoria === 4">
                     <ion-avatar slot="start">
-                      <img [src]="dish.images_upload.nome_image">
+                      <img *ngIf="dish.images_upload !== null" [src]="dish.images_upload.nome_image">
+                      <span class="no-img-product" *ngIf="dish.images_upload === null"></span>
                     </ion-avatar>
                     <ion-label>
                       <h2 class="fw700 text08">

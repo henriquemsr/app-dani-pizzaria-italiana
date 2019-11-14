@@ -4,7 +4,6 @@
     "app.nameb": "de Pedidos",
     "app.version": "",
     "app.description": "Dani Pizza Italiana",
-
     "app.button.search": "Pesquisar",
     "app.button.checkout": "Finalizar",
     "app.button.moreresults": "Mais resultados",
@@ -16,7 +15,6 @@
     "app.button.nearby": "Proximidade",
     "app.button.bycategory": "Categoria",
     "app.button.orders": "Pedidos",
-
     "app.label.booked": "Reservado",
     "app.label.book": "Book",
     "app.label.resultsf": "Resultados encontrados!",
@@ -33,7 +31,6 @@
     "app.label.voucher": "Voucher",
     "app.label.description": "Descrição",
     "app.label.location": "Localização",
-
     "app.label.userdata": "Dados Usuário",
     "app.label.usertype": "Tipo Usuário",
     "app.label.edit": "Editar",
@@ -51,9 +48,7 @@
     "app.label.amenities": "Facilidades",
     "app.label.features": "Especificações",
     "app.label.selectlocal": "Selecione Local",
-
     "app.label.errors.field": "Este campo é obrigatório",
-
     "app.pages.extras.title.header": "Páginas extras",
     "app.pages.extras.profileone.title.header": "Perfil 1",
     "app.pages.extras.profiletwo.title.header": "Perfil 2",
@@ -62,7 +57,6 @@
     "app.pages.extras.popupmenu.title.header": "Menu",
     "app.pages.extras.charts.title.header": "Gráficos",
     "app.pages.extras.post.title.header": "Postagens",
-
     "app.pages.menu.home": "Home",
     "app.pages.menu.booking": "Lista de Reservas",
     "app.pages.menu.favorites": "Favoritos",
@@ -75,57 +69,39 @@
     "app.pages.menu.about": "Sobre o aplicativo",
     "app.pages.menu.settings": "Configurações",
     "app.pages.menu.support": "Suporte",
-
-
     "app.pages.about.title.header": "Sobre",
     "app.pages.support.title.header": "Suporte",
-
     "app.pages.editprofile.title.header": "Editar Perfil",
     "app.pages.editprofile.avail.text": "Disponivel para conversar com o restaurante?",
-
     "app.pages.favorites.title.header": "Favoritos",
     "app.pages.favorites.title.nores": "You have no favorite hotels.",
-
     "app.pages.login.label.forgot": "Esqueceu a senha",
     "app.pages.login.text.forgot": "Digite seu endereço de e-mail para enviar uma senha de redefinição de link.",
     "app.pages.login.text.sended": "O email foi enviado com sucesso.",
-
     "app.pages.register.title.header": "Registrar",
     "app.pages.register.label.ihave": "Eu tenho uma conta!",
-
     "app.pages.homelocation.label.setlocation": "Configure local",
     "app.pages.homelocation.label.or": "Ou",
     "app.pages.homelocation.label.mylocation": "Local Atual",
-
     "app.pages.homeresults.label.rnear": "Restaurante próximos a vc",
     "app.pages.homeresults.label.or": "Ou",
     "app.pages.homeresults.label.mylocation": "Local Atual",
-
     "app.pages.bycategory.title.header": "Restaurante por categorias",
     "app.pages.nearby.title.header": "Restaurantes próximos",
-
     "app.pages.message.title.header": "Mensagem",
     "app.pages.messages.title.header": "Mensagens",
     "app.pages.messages.label.error": "Você não tem mensagens.",
-
     "app.pages.settings.title.header": "Configurações do aplicativo",
-
     "app.pages.restaurantlist.title.header": "Restaurantes",
     "app.pages.restaurantlist.label.type": "Tipo de Restaurante",
-
     "app.pages.dishlist.title.header": "Lista de desejos",
-
     "app.pages.favoriterestaurants.title.header": "Restaurante favoritos",
-
     "app.pages.dishdetail.label.ingredients": "Ingredientes",
     "app.pages.dishdetail.label.description": "Descrição",
-
     "app.pages.cart.title.header": "Carrinho",
     "app.pages.cart.label.error": "Você ainda não possui nenhum item.",
-
     "app.pages.checkout.title.header": "Finalizar",
-
-
+    "app.pages.address.title.header": "Endereço",
     "app.pages.latestorders.title.header": "Últimos pedidos",
-    "app.pages.latestorders.label.error": "Você não tem pedidos anteriores." 
+    "app.pages.latestorders.label.error": "Você não tem pedidos anteriores."
 }

@@ -1,9 +1,93 @@
 <ion-header>
-  <ion-toolbar>
-    <ion-title>address</ion-title>
+  <ion-toolbar color="primary">
+    <ion-title>{{ 'app.pages.address.title.header' | translate }}</ion-title>
+    <ion-buttons slot="end">
+      <ion-button size="small" shape="round" (click)="closeModal()" color="light">
+        <ion-icon slot="icon-only" name="close-circle"></ion-icon>
+      </ion-button>
+    </ion-buttons>
   </ion-toolbar>
 </ion-header>
 
 <ion-content>
+
+  <h1 class="ion-text-center primary">Endereços</h1>
+
+  <ion-item-sliding *ngFor="let item of address">
+    <ion-item>
+      <ion-label>{{item.bairro}}</ion-label>
+      <ion-label>{{item.cidade}}</ion-label>
+      <ion-toggle slot="end" [checked]="item.active" (click)="activeAddrees(item.id)"></ion-toggle>
+    </ion-item>
+    <ion-item-options side="end" type="true">
+      <ion-item-option>
+        <ion-icon style="margin:5px" color="light" name="create" (click)="goEditAddress(item)"></ion-icon>
+      </ion-item-option>
+    </ion-item-options>
+  </ion-item-sliding>
+
+  <ion-grid>
+    <ion-row class="ion-text-center">
+      <ion-col size="12">
+        <ion-button expand="full" color="primary" (click)="newAddress()">ADICIONAR NOVO</ion-button>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+
+  <ion-grid *ngIf="showAddress">
+    <ion-item-divider color="primary">
+      <!-- condição insesrir/alterar -->
+      <ion-label>Alterando Endereço</ion-label>
+    </ion-item-divider>
+    <ion-row>
+      <ion-col size="10">
+        <ion-item>
+          <ion-label position="floating">Cep:</ion-label>
+          <ion-input type="text" color="secondary" [(ngModel)]="singleAddress.cep"></ion-input>
+        </ion-item>
+      </ion-col>
+      <ion-col size="2">
+        <ion-button>
+          <ion-icon name="search"></ion-icon>
+        </ion-button>
+      </ion-col>
+      <ion-col size="12">
+        <ion-item>
+          <ion-label position="floating">Rua:</ion-label>
+          <ion-input type="text" color="secondary" [(ngModel)]="singleAddress.rua"></ion-input>
+        </ion-item>
+      </ion-col>
+      <ion-col size="12">
+        <ion-item>
+          <ion-label position="floating">Número:</ion-label>
+          <ion-input type="text" color="secondary" [(ngModel)]="singleAddress.numero"></ion-input>
+        </ion-item>
+      </ion-col>
+      <ion-col size="12">
+        <ion-item>
+          <ion-label position="floating">Bairro:</ion-label>
+          <ion-input type="text" color="secondary" [(ngModel)]="singleAddress.bairro"></ion-input>
+        </ion-item>
+      </ion-col>
+      <ion-col size="12">
+        <ion-item>
+          <ion-label position="floating">Cidade:</ion-label>
+          <ion-input type="text" color="secondary" [(ngModel)]="singleAddress.cidade"></ion-input>
+        </ion-item>
+      </ion-col>
+      <ion-col size="12">
+        <ion-item>
+          <ion-label position="floating">Estado:</ion-label>
+          <ion-input type="text" color="secondary" [(ngModel)]="singleAddress.estado"></ion-input>
+        </ion-item>
+      </ion-col>
+      <ion-col size="12">
+        <ion-button expand="full" color="primary">SALVAR</ion-button>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+
+
+
 
 </ion-content>

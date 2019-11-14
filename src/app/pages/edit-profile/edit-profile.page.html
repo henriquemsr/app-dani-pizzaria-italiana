@@ -38,10 +38,9 @@
               <ion-input inputmode="email" [value]="user.email"></ion-input>
             </ion-item>
 
-            <ion-item center>
-              <span>Endereço</span>
-              <span (click)="openAddres()">icon</span>
-            </ion-item>
+
+
+
             <!-- <div>
               <ion-item>
                 <ion-label color="dark" position="stacked">Cep</ion-label>
@@ -106,13 +105,22 @@
     <!-- <ion-button size="large" expand="full" color="dark" (click)="sendData()" no-margin>{{ 'app.label.edit' | translate }}</ion-button> -->
     <ion-button size="default" expand="full" color="dark" (click)="sendData()" margin>SALVAR</ion-button>
 
+    <div padding>
+      <!-- <ion-text color="dark" no-margin>
+        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Illum odio placeat incidunt nesciunt atque ratione
+        quisquam, fugit
+        omnis maxime adipisci excepturi dignissimos aliquam asperiores itaque unde sequi? Minus, quia, dolore?
+      </ion-text> -->
+  
+      <ion-item-divider>
+        <ion-label>Endereço</ion-label>
+      </ion-item-divider>
+  
+      <ion-button shape="round" expand="full" (click)="openAddres()">
+        Guarapari
+        <ion-icon slot="end" name="pin"></ion-icon>
+      </ion-button>
+    </div>
   </ion-card>
 
-  <div padding>
-    <!-- <ion-text color="dark" no-margin>
-      Lorem ipsum dolor sit amet, consectetur adipisicing elit. Illum odio placeat incidunt nesciunt atque ratione
-      quisquam, fugit
-      omnis maxime adipisci excepturi dignissimos aliquam asperiores itaque unde sequi? Minus, quia, dolore?
-    </ion-text> -->
-  </div>
 </ion-content>

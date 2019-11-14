@@ -32,4 +32,13 @@ export class UserService {
     }
     return this.http.post(endpoint, param, { headers, observe: 'response' });
   }
+
+  httpPut(endpoint: string, param, requireToken = true) {
+    let headers = new HttpHeaders();
+    if (requireToken) {
+      headers = this.createAuthHeader(headers);
+    }
+    return this.http.put(endpoint, param, { headers, observe: "response" });
+  }
+
 }
